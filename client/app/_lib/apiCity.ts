@@ -5,7 +5,7 @@ import { api } from "./apiAuth";
 
 export async function apiCity(lat: string, lng: string, signal?: AbortSignal) {
   const res = await axios.get(
-    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`,
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&key=bdc_50bea10fea6f45f9821d34f53843c7ca`,
     { signal }
   );
   return res;
