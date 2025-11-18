@@ -20,7 +20,7 @@ spec:
             - containerPort: 8080
           env:
             - name: ConnectionStrings__DefaultConnection
-              value: server=db;port=3306;user=root;password=2025;database=mappy_db
+              value: server=mysql-service;port=3306;user=root;password=2025;database=mappy_db
 ---
 apiVersion: v1
 kind: Service
