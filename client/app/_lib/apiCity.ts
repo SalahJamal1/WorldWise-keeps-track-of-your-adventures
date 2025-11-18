@@ -1,6 +1,7 @@
-import axios from 'axios';
-import { ICITY } from '../utils/ICITY';
-import { api } from './apiAuth';
+"use client";
+import axios from "axios";
+import { ICITY } from "../utils/ICITY";
+import { api } from "./apiAuth";
 
 export async function apiCity(lat: string, lng: string, signal?: AbortSignal) {
   const res = await axios.get(
@@ -11,11 +12,11 @@ export async function apiCity(lat: string, lng: string, signal?: AbortSignal) {
 }
 
 export async function AddCity(data: ICITY) {
-  const res = await api.post('/cities', data);
+  const res = await api.post("/cities", data);
   return res;
 }
 export async function GetCities(signal?: AbortSignal) {
-  const res = await api.get('/cities', { signal });
+  const res = await api.get("/cities", { signal });
   return res;
 }
 export async function GetCity(id: number, signal?: AbortSignal) {
