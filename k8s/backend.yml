@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: mappy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+        - name: server
+          image: salah529/mappy-backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ConnectionStrings__DefaultConnection
+              value: server=db;port=3306;user=root;password=2025;database=mappy_db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: mappy
+spec:
+  type: LoadBalancer
+  selector:
+    app: server
+  ports:
+    - port: 8080
+      targetPort: 8080
