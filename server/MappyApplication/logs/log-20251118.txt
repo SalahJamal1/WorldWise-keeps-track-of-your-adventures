@@ -16225,3 +16225,330 @@ LIMIT 2
 2025-11-18 08:57:39.648 +03:00 [INF] Executed action MappyApplication.Controllers.AuthController.Logout (MappyApplication) in 4.8637ms
 2025-11-18 08:57:39.649 +03:00 [INF] Executed endpoint 'MappyApplication.Controllers.AuthController.Logout (MappyApplication)'
 2025-11-18 08:57:39.649 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8080/api/v1/auth/logout - 200 null application/json; charset=utf-8 26.8023ms
+2025-11-18 10:50:24.884 +03:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'mappy_db'
+2025-11-18 10:50:24.929 +03:00 [INF] User profile is available. Using '/Users/salah/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-11-18 10:50:24.949 +03:00 [INF] Now listening on: http://localhost:8080
+2025-11-18 10:50:24.950 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-18 10:50:24.950 +03:00 [INF] Hosting environment: Development
+2025-11-18 10:50:24.950 +03:00 [INF] Content root path: /Users/salah/Desktop/mappy/server/MappyApplication
+2025-11-18 10:50:25.657 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8080/swagger/index.html - null null
+2025-11-18 10:50:25.723 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8080/swagger/index.html - 200 null text/html;charset=utf-8 66.713ms
+2025-11-18 10:50:26.395 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8080/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-18 10:50:26.397 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8080/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 2.4082ms
+2025-11-18 10:50:26.548 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8080/swagger/v1/swagger.json - null null
+2025-11-18 10:50:26.608 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8080/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 60.1403ms
+2025-11-18 10:50:28.545 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/login - null null
+2025-11-18 10:50:28.556 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-11-18 10:50:28.558 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:50:28.561 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/login - 204 null null 15.942ms
+2025-11-18 10:50:28.566 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8080/api/v1/auth/login - application/json 63
+2025-11-18 10:50:28.569 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:50:28.628 +03:00 [INF] Executing endpoint 'MappyApplication.Controllers.AuthController.Login (MappyApplication)'
+2025-11-18 10:50:28.640 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[MappyApplication.Models.user.AuthResponse] Login(MappyApplication.Models.user.AuthLogin) on controller MappyApplication.Controllers.AuthController (MappyApplication).
+2025-11-18 10:50:29.090 +03:00 [INF] Executed DbCommand (79ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`FirstName`, `a`.`LastName`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`NormalizedEmail` = @__normalizedEmail_0
+LIMIT 2
+2025-11-18 10:50:29.179 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+
+        UPDATE Tokens
+        SET Revoked = true, Expired = true
+        WHERE UserId = @p0
+          AND DeviceId = @p1
+          AND Revoked = false
+          AND Expired = false
+2025-11-18 10:50:29.208 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:50:29.213 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:50:29.224 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:50:29.225 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:50:29.299 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Tokens` (`AccessToken`, `CreatedAt`, `DeviceId`, `Expired`, `RefreshToken`, `Revoked`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT `Id`
+FROM `Tokens`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-11-18 10:50:29.311 +03:00 [INF] Added Token MappyApplication.Data.Token
+2025-11-18 10:50:29.316 +03:00 [INF] Executing ObjectResult, writing value of type 'MappyApplication.Models.user.AuthResponse'.
+2025-11-18 10:50:29.320 +03:00 [INF] Executed action MappyApplication.Controllers.AuthController.Login (MappyApplication) in 679.3595ms
+2025-11-18 10:50:29.321 +03:00 [INF] Executed endpoint 'MappyApplication.Controllers.AuthController.Login (MappyApplication)'
+2025-11-18 10:50:29.323 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8080/api/v1/auth/login - 200 null application/json; charset=utf-8 757.2862ms
+2025-11-18 10:50:31.209 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:8080/api/v1/cities - null null
+2025-11-18 10:50:31.224 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:50:31.236 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:8080/api/v1/cities - 204 null null 28.9964ms
+2025-11-18 10:50:31.244 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8080/api/v1/cities - null null
+2025-11-18 10:50:31.274 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:50:31.443 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__accessToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`AccessToken`, `t`.`CreatedAt`, `t`.`DeviceId`, `t`.`Expired`, `t`.`RefreshToken`, `t`.`Revoked`, `t`.`UserId`
+FROM `Tokens` AS `t`
+WHERE `t`.`AccessToken` = @__accessToken_0
+LIMIT 2
+2025-11-18 10:50:31.449 +03:00 [INF] Executing endpoint 'MappyApplication.Controllers.CitiesController.GetAll (MappyApplication)'
+2025-11-18 10:50:31.454 +03:00 [INF] Route matched with {action = "GetAll", controller = "Cities"}. Executing controller action with signature System.Threading.Tasks.Task`1[System.Collections.Generic.IEnumerable`1[MappyApplication.Models.cities.CitiesDto]] GetAll() on controller MappyApplication.Controllers.CitiesController (MappyApplication).
+2025-11-18 10:50:31.473 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`FirstName`, `a`.`LastName`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`Id` = @__p_0
+LIMIT 1
+2025-11-18 10:50:31.486 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`CityName`, `c`.`Country`, `c`.`Date`, `c`.`Emoji`, `c`.`Lat`, `c`.`Lng`, `c`.`Notes`, `c`.`UserId`
+FROM `Cities` AS `c`
+WHERE `c`.`UserId` = @__userId_0
+2025-11-18 10:50:31.506 +03:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[MappyApplication.Models.cities.CitiesDto, MappyApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-18 10:50:31.518 +03:00 [INF] Executed action MappyApplication.Controllers.CitiesController.GetAll (MappyApplication) in 63.6657ms
+2025-11-18 10:50:31.518 +03:00 [INF] Executed endpoint 'MappyApplication.Controllers.CitiesController.GetAll (MappyApplication)'
+2025-11-18 10:50:31.519 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8080/api/v1/cities - 200 null application/json; charset=utf-8 274.8343ms
+2025-11-18 10:55:35.596 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/refresh-token - null null
+2025-11-18 10:55:35.627 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:55:35.632 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/refresh-token - 204 null null 40.1756ms
+2025-11-18 10:55:35.649 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8080/api/v1/auth/refresh-token - null 0
+2025-11-18 10:55:35.669 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:55:36.063 +03:00 [INF] Executed DbCommand (65ms) [Parameters=[@__accessToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`AccessToken`, `t`.`CreatedAt`, `t`.`DeviceId`, `t`.`Expired`, `t`.`RefreshToken`, `t`.`Revoked`, `t`.`UserId`
+FROM `Tokens` AS `t`
+WHERE `t`.`AccessToken` = @__accessToken_0
+LIMIT 2
+2025-11-18 10:55:36.080 +03:00 [INF] Executing endpoint 'MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication)'
+2025-11-18 10:55:36.098 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[MappyApplication.Models.user.AuthResponse] RefreshToken() on controller MappyApplication.Controllers.AuthController (MappyApplication).
+2025-11-18 10:55:36.124 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`AccessToken`, `t`.`CreatedAt`, `t`.`DeviceId`, `t`.`Expired`, `t`.`RefreshToken`, `t`.`Revoked`, `t`.`UserId`
+FROM `Tokens` AS `t`
+WHERE `t`.`RefreshToken` = @__refreshToken_0
+LIMIT 2
+2025-11-18 10:55:36.133 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`FirstName`, `a`.`LastName`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`Id` = @__p_0
+LIMIT 1
+2025-11-18 10:55:36.201 +03:00 [INF] Executed DbCommand (35ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+
+        UPDATE Tokens
+        SET Revoked = true, Expired = true
+        WHERE UserId = @p0
+          AND DeviceId = @p1
+          AND Revoked = false
+          AND Expired = false
+2025-11-18 10:55:36.212 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:55:36.213 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:55:36.215 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:55:36.216 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:55:36.229 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Tokens` (`AccessToken`, `CreatedAt`, `DeviceId`, `Expired`, `RefreshToken`, `Revoked`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT `Id`
+FROM `Tokens`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-11-18 10:55:36.231 +03:00 [INF] Added Token MappyApplication.Data.Token
+2025-11-18 10:55:36.231 +03:00 [INF] Executing ObjectResult, writing value of type 'MappyApplication.Models.user.AuthResponse'.
+2025-11-18 10:55:36.233 +03:00 [INF] Executed action MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication) in 135.1382ms
+2025-11-18 10:55:36.233 +03:00 [INF] Executed endpoint 'MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication)'
+2025-11-18 10:55:36.233 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8080/api/v1/auth/refresh-token - 200 null application/json; charset=utf-8 591.9924ms
+2025-11-18 10:56:09.157 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/refresh-token - null null
+2025-11-18 10:56:09.162 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:56:09.163 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/refresh-token - 204 null null 5.7152ms
+2025-11-18 10:56:09.170 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8080/api/v1/auth/refresh-token - null 0
+2025-11-18 10:56:09.185 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:56:09.458 +03:00 [INF] Executed DbCommand (37ms) [Parameters=[@__accessToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`AccessToken`, `t`.`CreatedAt`, `t`.`DeviceId`, `t`.`Expired`, `t`.`RefreshToken`, `t`.`Revoked`, `t`.`UserId`
+FROM `Tokens` AS `t`
+WHERE `t`.`AccessToken` = @__accessToken_0
+LIMIT 2
+2025-11-18 10:56:09.464 +03:00 [INF] Executing endpoint 'MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication)'
+2025-11-18 10:56:09.471 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[MappyApplication.Models.user.AuthResponse] RefreshToken() on controller MappyApplication.Controllers.AuthController (MappyApplication).
+2025-11-18 10:56:09.475 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`AccessToken`, `t`.`CreatedAt`, `t`.`DeviceId`, `t`.`Expired`, `t`.`RefreshToken`, `t`.`Revoked`, `t`.`UserId`
+FROM `Tokens` AS `t`
+WHERE `t`.`RefreshToken` = @__refreshToken_0
+LIMIT 2
+2025-11-18 10:56:09.493 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`FirstName`, `a`.`LastName`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`Id` = @__p_0
+LIMIT 1
+2025-11-18 10:56:09.508 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+
+        UPDATE Tokens
+        SET Revoked = true, Expired = true
+        WHERE UserId = @p0
+          AND DeviceId = @p1
+          AND Revoked = false
+          AND Expired = false
+2025-11-18 10:56:09.513 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:56:09.515 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:56:09.519 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:56:09.519 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:56:09.561 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Tokens` (`AccessToken`, `CreatedAt`, `DeviceId`, `Expired`, `RefreshToken`, `Revoked`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT `Id`
+FROM `Tokens`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-11-18 10:56:09.565 +03:00 [INF] Added Token MappyApplication.Data.Token
+2025-11-18 10:56:09.565 +03:00 [INF] Executing ObjectResult, writing value of type 'MappyApplication.Models.user.AuthResponse'.
+2025-11-18 10:56:09.566 +03:00 [INF] Executed action MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication) in 95.1606ms
+2025-11-18 10:56:09.566 +03:00 [INF] Executed endpoint 'MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication)'
+2025-11-18 10:56:09.566 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8080/api/v1/auth/refresh-token - 200 null application/json; charset=utf-8 396.6727ms
+2025-11-18 10:58:36.315 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/refresh-token - null null
+2025-11-18 10:58:36.334 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:58:36.336 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/refresh-token - 204 null null 21.133ms
+2025-11-18 10:58:36.343 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8080/api/v1/auth/refresh-token - null 0
+2025-11-18 10:58:36.343 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:58:36.610 +03:00 [INF] Executed DbCommand (26ms) [Parameters=[@__accessToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`AccessToken`, `t`.`CreatedAt`, `t`.`DeviceId`, `t`.`Expired`, `t`.`RefreshToken`, `t`.`Revoked`, `t`.`UserId`
+FROM `Tokens` AS `t`
+WHERE `t`.`AccessToken` = @__accessToken_0
+LIMIT 2
+2025-11-18 10:58:36.612 +03:00 [INF] Executing endpoint 'MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication)'
+2025-11-18 10:58:36.613 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[MappyApplication.Models.user.AuthResponse] RefreshToken() on controller MappyApplication.Controllers.AuthController (MappyApplication).
+2025-11-18 10:58:36.615 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`AccessToken`, `t`.`CreatedAt`, `t`.`DeviceId`, `t`.`Expired`, `t`.`RefreshToken`, `t`.`Revoked`, `t`.`UserId`
+FROM `Tokens` AS `t`
+WHERE `t`.`RefreshToken` = @__refreshToken_0
+LIMIT 2
+2025-11-18 10:58:36.621 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`FirstName`, `a`.`LastName`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`Id` = @__p_0
+LIMIT 1
+2025-11-18 10:58:36.637 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+
+        UPDATE Tokens
+        SET Revoked = true, Expired = true
+        WHERE UserId = @p0
+          AND DeviceId = @p1
+          AND Revoked = false
+          AND Expired = false
+2025-11-18 10:58:36.641 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:58:36.642 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:58:36.645 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:58:36.646 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:58:36.652 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Tokens` (`AccessToken`, `CreatedAt`, `DeviceId`, `Expired`, `RefreshToken`, `Revoked`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT `Id`
+FROM `Tokens`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-11-18 10:58:36.653 +03:00 [INF] Added Token MappyApplication.Data.Token
+2025-11-18 10:58:36.653 +03:00 [INF] Executing ObjectResult, writing value of type 'MappyApplication.Models.user.AuthResponse'.
+2025-11-18 10:58:36.653 +03:00 [INF] Executed action MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication) in 40.525ms
+2025-11-18 10:58:36.653 +03:00 [INF] Executed endpoint 'MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication)'
+2025-11-18 10:58:36.653 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8080/api/v1/auth/refresh-token - 200 null application/json; charset=utf-8 310.8956ms
+2025-11-18 10:59:20.199 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/refresh-token - null null
+2025-11-18 10:59:20.201 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:59:20.203 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:8080/api/v1/auth/refresh-token - 204 null null 4.9138ms
+2025-11-18 10:59:20.205 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8080/api/v1/auth/refresh-token - null 0
+2025-11-18 10:59:20.206 +03:00 [INF] CORS policy execution successful.
+2025-11-18 10:59:20.430 +03:00 [INF] Executed DbCommand (47ms) [Parameters=[@__accessToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`AccessToken`, `t`.`CreatedAt`, `t`.`DeviceId`, `t`.`Expired`, `t`.`RefreshToken`, `t`.`Revoked`, `t`.`UserId`
+FROM `Tokens` AS `t`
+WHERE `t`.`AccessToken` = @__accessToken_0
+LIMIT 2
+2025-11-18 10:59:20.432 +03:00 [INF] Executing endpoint 'MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication)'
+2025-11-18 10:59:20.435 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[MappyApplication.Models.user.AuthResponse] RefreshToken() on controller MappyApplication.Controllers.AuthController (MappyApplication).
+2025-11-18 10:59:20.437 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`AccessToken`, `t`.`CreatedAt`, `t`.`DeviceId`, `t`.`Expired`, `t`.`RefreshToken`, `t`.`Revoked`, `t`.`UserId`
+FROM `Tokens` AS `t`
+WHERE `t`.`RefreshToken` = @__refreshToken_0
+LIMIT 2
+2025-11-18 10:59:20.449 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`FirstName`, `a`.`LastName`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`Id` = @__p_0
+LIMIT 1
+2025-11-18 10:59:20.482 +03:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+
+        UPDATE Tokens
+        SET Revoked = true, Expired = true
+        WHERE UserId = @p0
+          AND DeviceId = @p1
+          AND Revoked = false
+          AND Expired = false
+2025-11-18 10:59:20.488 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:59:20.490 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:59:20.492 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2025-11-18 10:59:20.493 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2025-11-18 10:59:20.502 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Tokens` (`AccessToken`, `CreatedAt`, `DeviceId`, `Expired`, `RefreshToken`, `Revoked`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT `Id`
+FROM `Tokens`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-11-18 10:59:20.504 +03:00 [INF] Added Token MappyApplication.Data.Token
+2025-11-18 10:59:20.504 +03:00 [INF] Executing ObjectResult, writing value of type 'MappyApplication.Models.user.AuthResponse'.
+2025-11-18 10:59:20.505 +03:00 [INF] Executed action MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication) in 69.7932ms
+2025-11-18 10:59:20.505 +03:00 [INF] Executed endpoint 'MappyApplication.Controllers.AuthController.RefreshToken (MappyApplication)'
+2025-11-18 10:59:20.506 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8080/api/v1/auth/refresh-token - 200 null application/json; charset=utf-8 300.5825ms
+2025-11-18 11:10:21.000 +03:00 [INF] Application is shutting down...
