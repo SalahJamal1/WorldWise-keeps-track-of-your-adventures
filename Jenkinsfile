@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DOTNET_ROOT = tool 'dotnet-8'
-        NODEJS_HOME = tool 'node-20'
         SCANNER_HOME = tool 'sonar-scanner'
     }
 
@@ -38,10 +37,12 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('client') {
-                    sh '''
-                        $NODEJS_HOME/bin/npm ci
-                        $NODEJS_HOME/bin/npm run build
-                    '''
+                   script {
+                        nodejs('node') {
+                            sh 'npm install'
+                            sh 'npm run build'
+                        }
+                    }
                 }
             }
         }
